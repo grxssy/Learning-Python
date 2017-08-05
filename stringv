@@ -1,0 +1,33 @@
+import os
+import platform
+from sys import argv
+from os.path import expanduser
+
+home = expanduser("~")
+
+os.chdir(home)
+
+def dirpck():
+    cdir = os.getcwd()
+    print(f"{cdir}.\nStay in this directory?\n(y/n)")
+    dirc = input("$")
+
+    if dirc == "n":
+        print(f"What is the new directory?")
+        ndir = input("$")
+        os.chdir(ndir)
+        dirpck
+
+if "-d" in argv:
+    dirpck()
+    print("Target file?")
+    tfiled = input("$")
+    fod = open(tfiled, "r")
+    pstrd = fod.read()
+    print(pstrd)
+
+elif "-t" in argv:
+    tflv = argv[2]
+    fov = open(tflv, "r")
+    pstrv = fov.read()
+    print(pstrv)
